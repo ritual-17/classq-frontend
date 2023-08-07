@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.css';
+import './Header.css';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';

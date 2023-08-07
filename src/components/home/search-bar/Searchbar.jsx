@@ -1,24 +1,36 @@
 import React, { useState } from 'react'
-import './searchbar.css'
+import './SearchBar.css'
 
 import Form from 'react-bootstrap/Form'
 
-const Searchbar = () => {
-    const [input, setInput] = useState('');
+const SearchBar = ({setResults, query, setQuery}) => {
+    //const [input, setInput] = useState('');
 
     const fetchCourses = (value) => {
-        fetch("http://jsonplaceholder.typicode.com/users")
+
+        if (!value) {
+            setResults([]);
+            return;
+        }
+
+        fetch("http://localhost:7071/api/searchSuggest", {
+            method: 'POST',
+            body: value,
+            headers: {
+              'Content-Type': 'text/plain'
+            },
+          })
             .then((response) => response.json())
-            .then((json) => {
-                const courses = json.filter((course) => {
-                    return course.name.toLowerCase().includes(value.toLowerCase());
-                });
+            .then((courses) => {
+                setResults(courses);
                 console.log(courses);
-            });
+            }).catch(error => {
+                console.error('Error:', error);
+              });
     }
 
     const handleChange = (value) => {
-        setInput(value);
+        setQuery(value);
         fetchCourses(value);
     }
 
@@ -29,11 +41,11 @@ const Searchbar = () => {
             id="courseSearch"
             placeholder="ex. MATH 308, ELEC 221"
             className="input-field"
-            defaultValue={input}
+            value={query}
             onChange={(e) => handleChange(e.target.value)}
         />
 
     )
 }
 
-export default Searchbar
+export default SearchBar

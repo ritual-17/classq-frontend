@@ -1,19 +1,26 @@
-import React from 'react'
-import './home.css'
-import Searchbar from './search-bar/Searchbar'
+import React, { useState } from 'react'
+import './Home.css'
+import SearchResults from './search-results/SearchResults'
+import SearchBar from './search-bar/SearchBar'
+import SectionResults from './section-results/SectionResults'
 
 const Home = () => {
+
+    const [results, setResults] = useState([]);
+    const [course, setCourse] = useState({});
+    const [query, setQuery] = useState('');
+
+    const clearSearchResults = (courseName) => {
+        setResults([]);
+        setQuery(courseName);
+    }
+
     return (
-        <div>
-            <div className="jumbotron">
-                <h1 className="display-4">Hello, world!</h1>
-                <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                <hr className="my-4" />
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-            </div>
+        <div className="home-container">
             <div className="search-container">
-                <Searchbar />
+                <SearchBar setResults={setResults} query={query} setQuery={setQuery} />
+                <SearchResults results={results} clearSearchResults={clearSearchResults} setCourse={setCourse}  />
+                <SectionResults course={course} />
             </div>
         </div>
     )
