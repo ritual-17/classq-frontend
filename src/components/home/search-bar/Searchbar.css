@@ -1,6 +1,7 @@
 .input-field{
     display: flex;
-    width: 50%;
+    width: 70%;
     height: 100%;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px 0 rgba(0,0,0);
+    margin-top: 10px;
 }

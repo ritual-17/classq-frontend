@@ -1,0 +1,14 @@
+.section-info{
+    border-radius: 0px;
+    text-align: left;
+}
+
+.section-card{
+    width: 40%;
+    margin-bottom: 10px;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+}
+
+.section-title{
+    background-color: antiquewhite;
+}

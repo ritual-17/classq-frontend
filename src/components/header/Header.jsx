@@ -7,14 +7,14 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const Header = () => {
   return (
-    <div>
-        <Navbar expand="lg" className="bg-body-tertiary">
+    <div className='header-container'>
+        <Navbar expand="lg" className="navbar">
             <Container className="nav-container">
-                <Navbar.Brand href="#home">classQ</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
+                <Navbar.Brand href="#home" style={{color: "dodgerblue"}} >classQ</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor: "dodgerblue"}} />
+                <Navbar.Collapse id="basic-navbar-nav"  >
+                    <Nav className="me-auto" >
+                        <Nav.Link href="#home" style={{color: "dodgerblue"}} >Home</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
